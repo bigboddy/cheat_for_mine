@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>WEXIDE</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--accent:#00e5ff;
+--bg:#08080d;
+--panel:rgba(20,22,34,.55);
+}
+
+body{
+background:var(--bg);
+color:#e8ecff;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+overflow-x:hidden;
+}
+
+
+.hero{
+height:65vh;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+
+.hero img{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+transform:scale(1.15);
+animation:zoom 6s forwards;
+}
+
+
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+180deg,
+rgba(8,8,13,.25),
+rgba(8,8,13,.9)
+);
+}
+
+
+.hero h1{
+position:relative;
+z-index:2;
+font-size:clamp(3rem,10vw,7rem);
+letter-spacing:.15em;
+font-weight:800;
+text-shadow:0 0 40px rgba(0,229,255,.6);
+animation:fadeUp 1.2s forwards;
+opacity:0;
+}
+
+
+
+main{
+max-width:1250px;
+margin:auto;
+padding:35px 24px 80px;
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+
+
+.panel{
+
+background:var(--panel);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+
+padding:24px;
+
+line-height:1.55;
+font-size:.95rem;
+
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+}
+
+
+
+.notice{
+
+background:var(--panel);
+backdrop-filter:blur(14px);
+
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+
+padding:14px 20px;
+
+font-size:.9rem;
+line-height:1.5;
+
+text-align:center;
+
+color:#b8bfd8;
+
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+
+}
+
+
+
+.download{
+text-align:center;
+margin:5px 0;
+}
+
+
+
+.dl-btn{
+
+display:inline-flex;
+align-items:center;
+
+padding:18px 42px;
+
+font-size:1.1rem;
+font-weight:700;
+
+color:#08080d;
+
+text-decoration:none;
+
+background:linear-gradient(
+135deg,
+var(--accent),
+#7c5cff
+);
+
+border-radius:15px;
+
+box-shadow:0 0 30px rgba(0,229,255,.4);
+
+transition:.3s;
+
+}
+
+
+.dl-btn:hover{
+transform:translateY(-3px);
+}
+
+
+
+.placeholder{
+
+color:#6b7290;
+font-style:italic;
+
+min-height:70px;
+
+}
+
+
+
+.reveal{
+
+opacity:0;
+transform:translateY(35px);
+
+transition:.8s ease;
+
+}
+
+
+.reveal.visible{
+
+opacity:1;
+transform:none;
+
+}
+
+
+
+@keyframes zoom{
+
+to{
+transform:scale(1);
+}
+
+}
+
+
+@keyframes fadeUp{
+
+to{
+opacity:1;
+transform:none;
+}
+
+}
+
+
+
+@media(max-width:900px){
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="hero">
+
+<img src="walpepper.jpg">
+
+<h1>WEXIDE</h1>
+
+</header>
+
+
+
+<main>
+
+
+
+<div class="info-grid reveal">
+
+
+<section class="panel">
+
+<b>WEXIDE</b>
+
+<br><br>
+
+Wexide — лучший софт для нашего времени,
+созданный для тех, кто ценит скорость,
+стабильность и современные технологии.
+
+<br><br>
+
+Благодаря обновлениям,
+продуманному интерфейсу и высокой
+производительности Wexide стал выбором
+тысяч игроков.
+
+</section>
+
+
+
+<section class="panel">
+
+<b>Особенности:</b>
+
+<br><br>
+
+⚡️ Максимальная производительность.
+<br><br>
+🎨 Современный интерфейс.
+<br><br>
+🛠 Модули с настройкой.
+<br><br>
+📈 Регулярные обновления.
+<br><br>
+🔒 Конфигурации и синхронизация.
+<br><br>
+💎 Премиальное качество.
+<br><br>
+⭐️ Кряк Celestial — наше преимущество.
+<br><br>
+🔥 Быстрая работа.
+
+</section>
+
+
+
+
+<section class="panel">
+
+<b>Почему именно Wexide?</b>
+
+<br><br>
+
+Wexide — это сочетание
+производительности,
+функциональности
+и современного дизайна.
+
+<br><br>
+
+Каждый элемент создан
+с упором на удобство,
+скорость и стабильность.
+
+<br><br>
+
+Wexide — когда качество
+становится стандартом.
+
+</section>
+
+
+
+</div>
+
+
+
+
+
+<section class="notice reveal">
+
+Если антивирусник жалуется - отключи, так бывает со многими читами.
+
+</section>
+
+
+
+
+
+<section class="download reveal">
+
+<a class="dl-btn" href="wexideclient.exe" download>
+
+⬇ Скачать WEXIDE
+
+</a>
+
+</section>
+
+
+
+
+
+<section class="notice reveal">
+
+В скором времени клиент может стать платным.
+
+</section>
+
+
+
+</main>
+
+
+
+
+<script>
+
+const io=new IntersectionObserver((entries)=>{
+
+entries.forEach(e=>{
+
+if(e.isIntersecting){
+
+e.target.classList.add("visible");
+
+io.unobserve(e.target);
+
+}
+
+});
+
+},{threshold:.15});
+
+
+document.querySelectorAll(".reveal")
+.forEach(el=>io.observe(el));
+
+</script>
+
+
+
+</body>
+</html>
