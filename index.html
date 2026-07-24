@@ -188,11 +188,22 @@ text-decoration:underline;
 }
 
 
-#downloadBox{
+#agreementBox.jump{
 
-display:none;
+animation:jump .5s;
 
-animation:fadeUp .5s forwards;
+}
+
+
+@keyframes jump{
+
+0%{transform:translateY(0)}
+
+30%{transform:translateY(-12px)}
+
+60%{transform:translateY(5px)}
+
+100%{transform:translateY(0)}
 
 }
 
@@ -354,7 +365,7 @@ Wexide — когда качество
 
 
 
-<section class="agreement reveal">
+<section class="agreement reveal" id="agreementBox">
 
 <label>
 
@@ -372,9 +383,9 @@ Wexide — когда качество
 
 
 
-<section class="download reveal" id="downloadBox">
+<section class="download reveal">
 
-<a class="dl-btn" href="wexideclient.exe" download>
+<a class="dl-btn" href="wexideclient.exe" id="downloadBtn">
 
 ⬇ Скачать WEXIDE
 
@@ -401,20 +412,24 @@ Wexide — когда качество
 
 const checkbox=document.getElementById("agree");
 
-const download=document.getElementById("downloadBox");
+const button=document.getElementById("downloadBtn");
+
+const agreement=document.getElementById("agreementBox");
 
 
-checkbox.addEventListener("change",()=>{
+button.addEventListener("click",(e)=>{
 
-if(checkbox.checked){
+if(!checkbox.checked){
 
-download.style.display="block";
+e.preventDefault();
 
-}
+alert("Необходимо принять соглашение");
 
-else{
+agreement.classList.remove("jump");
 
-download.style.display="none";
+void agreement.offsetWidth;
+
+agreement.classList.add("jump");
 
 }
 
