@@ -15,183 +15,110 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 :root{
---accent:#00e5ff;
---bg:#08080d;
---panel:rgba(20,22,34,.55);
+--sky-top:#00aaff;
+--sky-bottom:#e9fbff;
+--aqua-core:#00e5ff;
+--aero-gloss:linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.02) 51%, rgba(255,255,255,0.3) 100%);
+--aero-glass:rgba(255,255,255,0.42);
+--aero-border:rgba(255,255,255,0.85);
+--aero-shadow:0 18px 45px rgba(0,78,140,0.22), inset 0 1px 2px rgba(255,255,255,0.95);
+--text-main:#0d2c47;
+--text-sub:#23587b;
 }
 
 body{
-background:var(--bg);
-color:#e8ecff;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:radial-gradient(circle at 50% 15%, #b5f2ff 0%, #3ca8e8 45%, #05508a 100%);
+background-attachment:fixed;
+color:var(--text-main);
+font-family:"Segoe UI", -apple-system, BlinkMacSystemFont, "Lucida Grande", Tahoma, sans-serif;
+min-height:100vh;
 overflow-x:hidden;
 }
 
-/* Кнопка поддержки в левом верхнем углу */
-.support-link {
+/* Вспомогательный световой фон Aero */
+body::before{
+content:"";
+position:fixed;
+top:-25%;
+left:-20%;
+width:140vw;
+height:140vh;
+background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.45) 0%, transparent 40%),
+           radial-gradient(circle at 80% 60%, rgba(0,255,170,0.25) 0%, transparent 45%);
+pointer-events:none;
+z-index:0;
+}
+
+/* Кнопка поддержки в стиле глянцевой капсулы */
+.support-link{
 position:fixed;
 top:18px;
 left:20px;
 z-index:999;
-background:rgba(20,22,34,.7);
-border:1px solid rgba(0,229,255,.3);
-color:#00e5ff;
-padding:8px 16px;
-border-radius:10px;
-font-weight:600;
-font-size:.85rem;
+background:linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(210,245,255,0.5) 50%, rgba(140,215,255,0.6) 100%);
+border:1.5px solid var(--aero-border);
+color:#084777;
+padding:10px 22px;
+border-radius:25px;
+font-weight:700;
+font-size:.9rem;
 cursor:pointer;
-backdrop-filter:blur(8px);
-transition:.25s;
+backdrop-filter:blur(16px);
+-webkit-backdrop-filter:blur(16px);
+box-shadow:0 8px 24px rgba(0,60,110,0.25), inset 0 2px 3px rgba(255,255,255,0.9);
+transition:all .35s cubic-bezier(.25,1,.5,1);
+text-shadow:0 1px 0 rgba(255,255,255,0.8);
 }
 
 .support-link:hover{
-background:#00e5ff;
-color:#08080d;
-box-shadow:0 0 15px rgba(0,229,255,.5);
+transform:translateY(-2px) scale(1.03);
+background:linear-gradient(180deg, #ffffff 0%, #b8efff 50%, #4ec9ff 100%);
+box-shadow:0 12px 30px rgba(0,180,255,0.45), inset 0 2px 4px #fff;
+color:#002949;
 }
 
-/* Летающий DVD-бейдж */
+/* DVD бейдж в стиле водяного пузыря / стеклянной таблетки */
 #dvdBadge{
 position:fixed;
 z-index:998;
 cursor:pointer;
 user-select:none;
-background:linear-gradient(135deg, rgba(255,0,127,.85), rgba(124,92,255,.85));
-border:1px solid rgba(255,255,255,.3);
-color:#fff;
-padding:10px 18px;
-border-radius:30px;
-font-size:.85rem;
-font-weight:600;
-max-width:320px;
+background:linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(175,236,255,0.6) 48%, rgba(77,192,255,0.5) 52%, rgba(255,255,255,0.8) 100%);
+border:2px solid rgba(255,255,255,0.95);
+color:#033d6b;
+padding:12px 22px;
+border-radius:50px;
+font-size:.88rem;
+font-weight:700;
+max-width:340px;
 text-align:center;
-box-shadow:0 0 20px rgba(255,0,127,.45);
-backdrop-filter:blur(6px);
-transition:transform .15s ease, box-shadow .2s;
+box-shadow:0 14px 35px rgba(0,80,160,0.3), inset 0 2px 5px #fff;
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+transition:transform .3s cubic-bezier(.25,1,.5,1), box-shadow .3s;
+text-shadow:0 1px 1px rgba(255,255,255,0.8);
 }
 
 #dvdBadge:hover{
-transform:scale(1.05);
-box-shadow:0 0 30px rgba(0,229,255,.7);
+transform:scale(1.06);
+box-shadow:0 20px 45px rgba(0,210,255,0.6), inset 0 2px 6px #fff;
 }
 
-/* Модальные окна */
-.modal-overlay{
-position:fixed;
-inset:0;
-z-index:10000;
-background:rgba(8,8,13,.8);
-backdrop-filter:blur(10px);
-display:none;
-align-items:center;
-justify-content:center;
-padding:20px;
-}
-
-.modal-overlay.active{
-display:flex;
-}
-
-.modal-card{
-background:rgba(20,22,34,.95);
-border:1px solid rgba(0,229,255,.3);
-box-shadow:0 20px 50px rgba(0,0,0,.7);
-border-radius:20px;
-max-width:480px;
-width:100%;
-padding:30px;
-text-align:center;
-position:relative;
-}
-
-.modal-card h2{
-margin-bottom:12px;
-color:#00e5ff;
-font-size:1.4rem;
-}
-
-.modal-card p{
-font-size:.9rem;
-color:#b8bfd8;
-margin-bottom:18px;
-line-height:1.4;
-}
-
-.modal-card textarea{
-width:100%;
-height:120px;
-background:rgba(8,8,13,.8);
-border:1px solid rgba(255,255,255,.15);
-border-radius:12px;
-padding:12px;
-color:#fff;
-font-family:inherit;
-resize:none;
-outline:none;
-font-size:.9rem;
-margin-bottom:16px;
-transition:border-color .2s;
-}
-
-.modal-card textarea:focus{
-border-color:#00e5ff;
-}
-
-.modal-actions{
-display:flex;
-gap:12px;
-justify-content:center;
-}
-
-.btn-secondary{
-background:rgba(255,255,255,.1);
-color:#fff;
-border:none;
-padding:12px 24px;
-border-radius:10px;
-cursor:pointer;
-font-weight:600;
-transition:.2s;
-}
-
-.btn-secondary:hover{
-background:rgba(255,255,255,.2);
-}
-
-.btn-primary{
-background:linear-gradient(135deg, var(--accent), #7c5cff);
-color:#08080d;
-border:none;
-padding:12px 28px;
-border-radius:10px;
-cursor:pointer;
-font-weight:700;
-transition:.2s;
-box-shadow:0 0 15px rgba(0,229,255,.3);
-}
-
-.btn-primary:hover{
-transform:translateY(-2px);
-box-shadow:0 0 25px rgba(0,229,255,.6);
-}
-
-.success-msg{
-display:none;
-line-height:1.6;
-font-size:1rem;
-color:#e8ecff;
-padding:20px 0;
-}
-
+/* Hero секция с глянцевой линзой */
 .hero{
-height:65vh;
+height:68vh;
 position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
 overflow:hidden;
+border-bottom:3px solid rgba(255,255,255,0.4);
+box-shadow:0 15px 40px rgba(0,50,110,0.25);
 }
 
 .hero img{
@@ -200,19 +127,17 @@ inset:0;
 width:100%;
 height:100%;
 object-fit:cover;
-transform:scale(1.15);
-animation:zoom 6s forwards;
+transform:scale(1.12);
+animation:zoom 8s cubic-bezier(.25,1,.5,1) forwards;
+filter:contrast(1.08) brightness(1.05) saturate(1.2);
 }
 
 .hero::after{
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(
-180deg,
-rgba(8,8,13,.25),
-rgba(8,8,13,.9)
-);
+background:linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(0,140,220,0.35) 60%, rgba(5,60,110,0.75) 100%);
+backdrop-filter:blur(1px);
 }
 
 .hero-content{
@@ -221,137 +146,362 @@ z-index:2;
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:8px;
-animation:fadeUp 1.2s forwards;
+gap:6px;
+animation:fadeUp 1.4s cubic-bezier(.25,1,.5,1) forwards;
 opacity:0;
 }
 
+/* Переливающийся текст Frutiger Aero */
 .sub-title{
-font-size:clamp(1.2rem,3.5vw,2.2rem);
+font-size:clamp(1.2rem, 3.5vw, 2.2rem);
 font-weight:900;
-letter-spacing:.25em;
+letter-spacing:.28em;
 text-transform:uppercase;
-background:linear-gradient(90deg,#ff007f,#ff7b00,#ffe600,#00ff88,#00e5ff,#7c5cff,#ff007f);
-background-size:300% 300%;
+background:linear-gradient(90deg, #ffffff, #00ffff, #70ff9c, #ffe600, #ff80df, #ffffff);
+background-size:400% 400%;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:rainbow 4s linear infinite;
-filter:drop-shadow(0 0 16px rgba(0,229,255,.45));
+animation:rainbow 5s linear infinite;
+filter:drop-shadow(0 3px 12px rgba(0,0,0,0.35)) drop-shadow(0 0 10px rgba(0,255,255,0.8));
 }
 
 .hero h1{
-font-size:clamp(3rem,10vw,7rem);
-letter-spacing:.15em;
-font-weight:800;
-text-shadow:0 0 40px rgba(0,229,255,.6);
+font-size:clamp(3.2rem, 11vw, 7.5rem);
+letter-spacing:.18em;
+font-weight:900;
+color:#ffffff;
+text-shadow:0 2px 4px rgba(0,30,70,0.5), 0 8px 30px rgba(0,210,255,0.9), 0 0 50px rgba(255,255,255,0.7);
 }
 
 main{
+position:relative;
+z-index:1;
 max-width:1250px;
 margin:auto;
-padding:35px 24px 80px;
+padding:40px 24px 90px;
 display:flex;
 flex-direction:column;
-gap:25px;
+gap:30px;
 }
 
 .info-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
-gap:20px;
+gap:24px;
 }
 
+/* Стеклянные глянцевые карточки Frutiger Aero */
 .panel,
 .notice{
-background:var(--panel);
-backdrop-filter:blur(14px);
-border:1px solid rgba(255,255,255,.08);
-border-radius:18px;
-padding:24px;
-line-height:1.55;
-font-size:.95rem;
-box-shadow:0 20px 60px rgba(0,0,0,.35);
+position:relative;
+background:var(--aero-glass);
+backdrop-filter:blur(22px);
+-webkit-backdrop-filter:blur(22px);
+border:1.5px solid var(--aero-border);
+border-radius:24px;
+padding:30px 26px;
+line-height:1.65;
+font-size:.98rem;
+color:var(--text-main);
+box-shadow:var(--aero-shadow);
+overflow:hidden;
+transition:all .4s cubic-bezier(.25,1,.5,1);
+}
+
+/* Верхний глянцевый блик */
+.panel::before,
+.notice::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:45%;
+background:linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.08) 100%);
+border-radius:22px 22px 120px 120px / 22px 22px 35px 35px;
+pointer-events:none;
+}
+
+.panel:hover{
+transform:translateY(-6px);
+background:rgba(255,255,255,0.55);
+box-shadow:0 25px 60px rgba(0,120,200,0.35), inset 0 2px 5px rgba(255,255,255,1);
+}
+
+.panel b{
+font-size:1.18rem;
+color:#003966;
+text-shadow:0 1px 0 rgba(255,255,255,0.8);
+border-bottom:2px solid rgba(0,180,255,0.3);
+display:inline-block;
+padding-bottom:4px;
 }
 
 .notice{
 text-align:center;
-color:#b8bfd8;
+color:#0d426a;
+font-weight:600;
+background:rgba(255,255,255,0.48);
+}
+
+.notice b{
+color:#00345d;
 }
 
 .download{
 text-align:center;
+padding:10px 0;
 }
 
+/* Объемная желейно-глянцевая кнопка скачивания */
 .dl-btn{
 display:inline-flex;
 align-items:center;
-padding:18px 42px;
-font-size:1.1rem;
-font-weight:700;
-color:#08080d;
+justify-content:center;
+padding:20px 52px;
+font-size:1.25rem;
+font-weight:800;
+color:#ffffff;
 text-decoration:none;
-background:linear-gradient(
-135deg,
-var(--accent),
-#7c5cff
-);
-border-radius:15px;
-box-shadow:0 0 30px rgba(0,229,255,.4);
-transition:.3s;
+position:relative;
+overflow:hidden;
+background:linear-gradient(180deg, #4ce2ff 0%, #0099ff 50%, #0066cc 51%, #00aaff 100%);
+border-radius:50px;
+border:2px solid #ffffff;
+box-shadow:0 12px 35px rgba(0,105,200,0.55), inset 0 2px 4px rgba(255,255,255,0.9), inset 0 -4px 6px rgba(0,30,80,0.4);
+text-shadow:0 2px 3px rgba(0,40,90,0.6);
+transition:all .35s cubic-bezier(.25,1,.5,1);
+cursor:pointer;
+}
+
+.dl-btn::before{
+content:"";
+position:absolute;
+top:2px;
+left:10%;
+right:10%;
+height:42%;
+background:linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.2) 100%);
+border-radius:40px;
+pointer-events:none;
 }
 
 .dl-btn:hover{
-transform:translateY(-3px);
+transform:translateY(-4px) scale(1.03);
+background:linear-gradient(180deg, #6cedff 0%, #1ab0ff 50%, #0077ee 51%, #19baff 100%);
+box-shadow:0 20px 50px rgba(0,170,255,0.7), inset 0 2px 6px #ffffff;
+}
+
+.dl-btn:active{
+transform:translateY(1px) scale(0.98);
+box-shadow:0 6px 18px rgba(0,105,200,0.4), inset 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .agreement{
 text-align:center;
-font-size:.95rem;
-color:#b8bfd8;
+font-size:1rem;
+color:#083a60;
+font-weight:600;
+text-shadow:0 1px 0 rgba(255,255,255,0.6);
+}
+
+.agreement label{
+cursor:pointer;
+display:inline-flex;
+align-items:center;
+gap:8px;
+}
+
+.agreement input[type="checkbox"]{
+width:18px;
+height:18px;
+accent-color:#0099ff;
+cursor:pointer;
 }
 
 .agreement a{
-color:#00e5ff;
+color:#005db3;
 text-decoration:none;
+border-bottom:1.5px dashed #0099ff;
+transition:.2s;
 }
 
 .agreement a:hover{
-text-decoration:underline;
+color:#002952;
+border-bottom-style:solid;
 }
 
 #agreementBox.jump{
-animation:jump .5s;
+animation:jump .5s cubic-bezier(.25,1,.5,1);
 }
 
 @keyframes jump{
 0%{transform:translateY(0)}
-30%{transform:translateY(-12px)}
-60%{transform:translateY(5px)}
+30%{transform:translateY(-14px)}
+60%{transform:translateY(6px)}
 100%{transform:translateY(0)}
 }
 
+/* Плавный мягкий Reveal */
 .reveal{
 opacity:0;
-transform:translateY(35px);
-transition:.8s ease;
+transform:translateY(40px) scale(0.98);
+transition:all .9s cubic-bezier(.16,1,.3,1);
 }
 
 .reveal.visible{
 opacity:1;
-transform:none;
+transform:translateY(0) scale(1);
+}
+
+/* Модальные окна с аэро-стеклом */
+.modal-overlay{
+position:fixed;
+inset:0;
+z-index:10000;
+background:rgba(8,50,90,0.55);
+backdrop-filter:blur(18px);
+-webkit-backdrop-filter:blur(18px);
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+opacity:0;
+transition:opacity .35s ease;
+}
+
+.modal-overlay.active{
+display:flex;
+opacity:1;
+}
+
+.modal-card{
+background:linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(225,245,255,0.85) 100%);
+border:2px solid #ffffff;
+box-shadow:0 30px 80px rgba(0,40,90,0.4), inset 0 2px 4px #ffffff;
+border-radius:30px;
+max-width:500px;
+width:100%;
+padding:36px;
+text-align:center;
+position:relative;
+transform:scale(0.92) translateY(20px);
+transition:transform .4s cubic-bezier(.25,1,.5,1);
+overflow:hidden;
+}
+
+.modal-card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+right:0;
+height:38%;
+background:linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.05) 100%);
+border-radius:28px 28px 120px 120px / 28px 28px 30px 30px;
+pointer-events:none;
+}
+
+.modal-overlay.active .modal-card{
+transform:scale(1) translateY(0);
+}
+
+.modal-card h2{
+margin-bottom:12px;
+color:#00487c;
+font-size:1.6rem;
+text-shadow:0 1px 0 #fff;
+}
+
+.modal-card p{
+font-size:.95rem;
+color:#215880;
+margin-bottom:20px;
+line-height:1.5;
+}
+
+.modal-card textarea{
+width:100%;
+height:130px;
+background:rgba(255,255,255,0.8);
+border:1.5px solid rgba(0,140,240,0.3);
+border-radius:18px;
+padding:16px;
+color:#083556;
+font-family:inherit;
+resize:none;
+outline:none;
+font-size:.95rem;
+margin-bottom:20px;
+box-shadow:inset 0 2px 6px rgba(0,60,120,0.1);
+transition:border-color .3s, box-shadow .3s;
+}
+
+.modal-card textarea:focus{
+border-color:#0099ff;
+background:#ffffff;
+box-shadow:0 0 16px rgba(0,170,255,0.4), inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.modal-actions{
+display:flex;
+gap:14px;
+justify-content:center;
+}
+
+.btn-secondary{
+background:linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(220,230,240,0.8) 100%);
+color:#14446a;
+border:1.5px solid #fff;
+padding:12px 28px;
+border-radius:30px;
+cursor:pointer;
+font-weight:700;
+font-size:.95rem;
+box-shadow:0 6px 16px rgba(0,40,80,0.15), inset 0 2px 3px #fff;
+transition:all .3s cubic-bezier(.25,1,.5,1);
+}
+
+.btn-secondary:hover{
+transform:translateY(-2px);
+background:#ffffff;
+box-shadow:0 10px 22px rgba(0,40,80,0.25);
+}
+
+.btn-primary{
+background:linear-gradient(180deg, #4ce2ff 0%, #0099ff 50%, #0066cc 51%, #00aaff 100%);
+color:#ffffff;
+border:1.5px solid #fff;
+padding:12px 34px;
+border-radius:30px;
+cursor:pointer;
+font-weight:800;
+font-size:.95rem;
+box-shadow:0 8px 22px rgba(0,120,220,0.4), inset 0 2px 4px rgba(255,255,255,0.8);
+text-shadow:0 1px 2px rgba(0,30,80,0.5);
+transition:all .3s cubic-bezier(.25,1,.5,1);
+}
+
+.btn-primary:hover{
+transform:translateY(-2px) scale(1.02);
+box-shadow:0 14px 30px rgba(0,170,255,0.6), inset 0 2px 5px #fff;
+}
+
+.success-msg{
+display:none;
+line-height:1.7;
+font-size:1.1rem;
+color:#084777;
+padding:20px 0;
+font-weight:600;
 }
 
 @keyframes zoom{
-to{
-transform:scale(1);
-}
+to{transform:scale(1);}
 }
 
 @keyframes fadeUp{
-to{
-opacity:1;
-transform:none;
-}
+to{opacity:1;transform:none;}
 }
 
 @keyframes rainbow{
@@ -379,7 +529,7 @@ grid-template-columns:1fr;
 <div id="dvdBadge">Если вы тут, вы тестировщики сайта, нажмите, чтобы оставить отзыв о игре ( нажимать после теста)</div>
 
 <header class="hero">
-  <img src="walpepper.jpg">
+  <img src="walpepper.jpg" alt="Wallpaper">
   <div class="hero-content">
     <span class="sub-title">wexidevisual</span>
     <h1>WEXIDE</h1>
@@ -444,7 +594,7 @@ Wexide — когда качество
 <section class="notice reveal">
 Если антивирус жалуется — временно отключите его на время распаковки архива. Это может происходить с подобными программами.
 <br><br>
-<b>Пароль от архива:</b> <span style="color:#00e5ff;">123</span>
+<b>Пароль от архива:</b> <span style="color:#0077cc; font-weight:800;">123</span>
 <br><br>
 <b>Распаковка:</b> рекомендуется распаковывать архив через WinRAR
 </section>
@@ -530,7 +680,7 @@ button.addEventListener("click", (e) => {
   }
 });
 
-// Анимация появления блоков при скролле
+// Плавное появление секций через IntersectionObserver
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if(e.isIntersecting){
@@ -538,11 +688,11 @@ const io = new IntersectionObserver((entries) => {
       io.unobserve(e.target);
     }
   });
-}, {threshold: .15});
+}, {threshold: .12});
 
 document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-// Модалка отзыва
+// Логика окна отзыва
 const feedbackModal = document.getElementById("feedbackModal");
 
 document.getElementById("dvdBadge").addEventListener("click", () => {
@@ -564,10 +714,10 @@ document.getElementById("feedbackSuccessClose").addEventListener("click", () => 
     document.getElementById("feedbackFormBlock").style.display = "block";
     document.getElementById("feedbackSuccess").style.display = "none";
     document.getElementById("feedbackText").value = "";
-  }, 300);
+  }, 350);
 });
 
-// Модалка поддержки
+// Логика окна поддержки
 const supportModal = document.getElementById("supportModal");
 
 document.getElementById("supportBtn").addEventListener("click", () => {
@@ -589,13 +739,13 @@ document.getElementById("supportSuccessClose").addEventListener("click", () => {
     document.getElementById("supportFormBlock").style.display = "block";
     document.getElementById("supportSuccess").style.display = "none";
     document.getElementById("supportText").value = "";
-  }, 300);
+  }, 350);
 });
 
-// Плавный и медленный отскок DVD
+// Плавный и размеренный полет DVD бейджа
 const badge = document.getElementById("dvdBadge");
-let posX = 80, posY = 80;
-let speedX = 0.9, speedY = 0.9;
+let posX = 60, posY = 60;
+let speedX = 0.75, speedY = 0.75;
 
 function animateDvd() {
   const winW = window.innerWidth;
