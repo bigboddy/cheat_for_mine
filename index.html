@@ -61,16 +61,35 @@ rgba(8,8,13,.9)
 );
 }
 
-
-.hero h1{
+.hero-content{
 position:relative;
 z-index:2;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:8px;
+animation:fadeUp 1.2s forwards;
+opacity:0;
+}
+
+.sub-title{
+font-size:clamp(1.2rem,3.5vw,2.2rem);
+font-weight:900;
+letter-spacing:.25em;
+text-transform:uppercase;
+background:linear-gradient(90deg,#ff007f,#ff7b00,#ffe600,#00ff88,#00e5ff,#7c5cff,#ff007f);
+background-size:300% 300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+animation:rainbow 4s linear infinite;
+filter:drop-shadow(0 0 16px rgba(0,229,255,.45));
+}
+
+.hero h1{
 font-size:clamp(3rem,10vw,7rem);
 letter-spacing:.15em;
 font-weight:800;
 text-shadow:0 0 40px rgba(0,229,255,.6);
-animation:fadeUp 1.2s forwards;
-opacity:0;
 }
 
 
@@ -246,6 +265,11 @@ transform:none;
 
 }
 
+@keyframes rainbow{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
 
 
 @media(max-width:900px){
@@ -269,7 +293,10 @@ grid-template-columns:1fr;
 
 <img src="walpepper.jpg">
 
-<h1>WEXIDE</h1>
+<div class="hero-content">
+  <span class="sub-title">wexidevisual</span>
+  <h1>WEXIDE</h1>
+</div>
 
 </header>
 
