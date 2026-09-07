@@ -486,7 +486,7 @@ Wexide — когда качество
     <div class="success-msg" id="feedbackSuccess">
       Спасибо за ваш отзыв! Он поможет сделать софт лучше.
       <br><br>
-      <button class="btn-secondary" id="feedbackSuccessClose">Закрыть</button>
+      <button class="btn-secondary" id="feedbackSuccessClose">Назад</button>
     </div>
   </div>
 </div>
@@ -508,7 +508,7 @@ Wexide — когда качество
       <br>
       С уважением, <b>wexide</b>.
       <br><br>
-      <button class="btn-secondary" id="supportSuccessClose">Закрыть</button>
+      <button class="btn-secondary" id="supportSuccessClose">Назад</button>
     </div>
   </div>
 </div>
@@ -542,9 +542,8 @@ const io = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-// Логика модалок
+// Модалка отзыва
 const feedbackModal = document.getElementById("feedbackModal");
-const supportModal = document.getElementById("supportModal");
 
 document.getElementById("dvdBadge").addEventListener("click", () => {
   feedbackModal.classList.add("active");
@@ -568,6 +567,9 @@ document.getElementById("feedbackSuccessClose").addEventListener("click", () => 
   }, 300);
 });
 
+// Модалка поддержки
+const supportModal = document.getElementById("supportModal");
+
 document.getElementById("supportBtn").addEventListener("click", () => {
   supportModal.classList.add("active");
 });
@@ -590,10 +592,10 @@ document.getElementById("supportSuccessClose").addEventListener("click", () => {
   }, 300);
 });
 
-// Физика отскока DVD логотипа
+// Плавный и медленный отскок DVD
 const badge = document.getElementById("dvdBadge");
-let posX = 100, posY = 100;
-let speedX = 2.2, speedY = 2.2;
+let posX = 80, posY = 80;
+let speedX = 0.9, speedY = 0.9;
 
 function animateDvd() {
   const winW = window.innerWidth;
