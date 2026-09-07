@@ -28,6 +28,162 @@ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 overflow-x:hidden;
 }
 
+/* Кнопка поддержки в левом верхнем углу */
+.support-link {
+position:fixed;
+top:18px;
+left:20px;
+z-index:999;
+background:rgba(20,22,34,.7);
+border:1px solid rgba(0,229,255,.3);
+color:#00e5ff;
+padding:8px 16px;
+border-radius:10px;
+font-weight:600;
+font-size:.85rem;
+cursor:pointer;
+backdrop-filter:blur(8px);
+transition:.25s;
+}
+
+.support-link:hover{
+background:#00e5ff;
+color:#08080d;
+box-shadow:0 0 15px rgba(0,229,255,.5);
+}
+
+/* Летающий DVD-бейдж */
+#dvdBadge{
+position:fixed;
+z-index:998;
+cursor:pointer;
+user-select:none;
+background:linear-gradient(135deg, rgba(255,0,127,.85), rgba(124,92,255,.85));
+border:1px solid rgba(255,255,255,.3);
+color:#fff;
+padding:10px 18px;
+border-radius:30px;
+font-size:.85rem;
+font-weight:600;
+max-width:320px;
+text-align:center;
+box-shadow:0 0 20px rgba(255,0,127,.45);
+backdrop-filter:blur(6px);
+transition:transform .15s ease, box-shadow .2s;
+}
+
+#dvdBadge:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px rgba(0,229,255,.7);
+}
+
+/* Модальные окна */
+.modal-overlay{
+position:fixed;
+inset:0;
+z-index:10000;
+background:rgba(8,8,13,.8);
+backdrop-filter:blur(10px);
+display:none;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.modal-overlay.active{
+display:flex;
+}
+
+.modal-card{
+background:rgba(20,22,34,.95);
+border:1px solid rgba(0,229,255,.3);
+box-shadow:0 20px 50px rgba(0,0,0,.7);
+border-radius:20px;
+max-width:480px;
+width:100%;
+padding:30px;
+text-align:center;
+position:relative;
+}
+
+.modal-card h2{
+margin-bottom:12px;
+color:#00e5ff;
+font-size:1.4rem;
+}
+
+.modal-card p{
+font-size:.9rem;
+color:#b8bfd8;
+margin-bottom:18px;
+line-height:1.4;
+}
+
+.modal-card textarea{
+width:100%;
+height:120px;
+background:rgba(8,8,13,.8);
+border:1px solid rgba(255,255,255,.15);
+border-radius:12px;
+padding:12px;
+color:#fff;
+font-family:inherit;
+resize:none;
+outline:none;
+font-size:.9rem;
+margin-bottom:16px;
+transition:border-color .2s;
+}
+
+.modal-card textarea:focus{
+border-color:#00e5ff;
+}
+
+.modal-actions{
+display:flex;
+gap:12px;
+justify-content:center;
+}
+
+.btn-secondary{
+background:rgba(255,255,255,.1);
+color:#fff;
+border:none;
+padding:12px 24px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+transition:.2s;
+}
+
+.btn-secondary:hover{
+background:rgba(255,255,255,.2);
+}
+
+.btn-primary{
+background:linear-gradient(135deg, var(--accent), #7c5cff);
+color:#08080d;
+border:none;
+padding:12px 28px;
+border-radius:10px;
+cursor:pointer;
+font-weight:700;
+transition:.2s;
+box-shadow:0 0 15px rgba(0,229,255,.3);
+}
+
+.btn-primary:hover{
+transform:translateY(-2px);
+box-shadow:0 0 25px rgba(0,229,255,.6);
+}
+
+.success-msg{
+display:none;
+line-height:1.6;
+font-size:1rem;
+color:#e8ecff;
+padding:20px 0;
+}
 
 .hero{
 height:65vh;
@@ -38,7 +194,6 @@ justify-content:center;
 overflow:hidden;
 }
 
-
 .hero img{
 position:absolute;
 inset:0;
@@ -48,7 +203,6 @@ object-fit:cover;
 transform:scale(1.15);
 animation:zoom 6s forwards;
 }
-
 
 .hero::after{
 content:"";
@@ -92,8 +246,6 @@ font-weight:800;
 text-shadow:0 0 40px rgba(0,229,255,.6);
 }
 
-
-
 main{
 max-width:1250px;
 margin:auto;
@@ -103,166 +255,103 @@ flex-direction:column;
 gap:25px;
 }
 
-
-
 .info-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:20px;
 }
 
-
-
 .panel,
 .notice{
-
 background:var(--panel);
 backdrop-filter:blur(14px);
-
 border:1px solid rgba(255,255,255,.08);
 border-radius:18px;
-
 padding:24px;
-
 line-height:1.55;
 font-size:.95rem;
-
 box-shadow:0 20px 60px rgba(0,0,0,.35);
-
 }
-
-
 
 .notice{
 text-align:center;
 color:#b8bfd8;
 }
-
-
 
 .download{
 text-align:center;
 }
 
-
-
 .dl-btn{
-
 display:inline-flex;
 align-items:center;
-
 padding:18px 42px;
-
 font-size:1.1rem;
 font-weight:700;
-
 color:#08080d;
-
 text-decoration:none;
-
 background:linear-gradient(
 135deg,
 var(--accent),
 #7c5cff
 );
-
 border-radius:15px;
-
 box-shadow:0 0 30px rgba(0,229,255,.4);
-
 transition:.3s;
-
 }
-
 
 .dl-btn:hover{
 transform:translateY(-3px);
 }
 
-
 .agreement{
-
 text-align:center;
-
 font-size:.95rem;
-
 color:#b8bfd8;
-
 }
-
 
 .agreement a{
-
 color:#00e5ff;
-
 text-decoration:none;
-
 }
-
 
 .agreement a:hover{
-
 text-decoration:underline;
-
 }
-
 
 #agreementBox.jump{
-
 animation:jump .5s;
-
 }
-
 
 @keyframes jump{
-
 0%{transform:translateY(0)}
-
 30%{transform:translateY(-12px)}
-
 60%{transform:translateY(5px)}
-
 100%{transform:translateY(0)}
-
 }
-
-
 
 .reveal{
-
 opacity:0;
 transform:translateY(35px);
-
 transition:.8s ease;
-
 }
-
 
 .reveal.visible{
-
 opacity:1;
 transform:none;
-
 }
 
-
-
 @keyframes zoom{
-
 to{
 transform:scale(1);
 }
-
 }
 
-
 @keyframes fadeUp{
-
 to{
 opacity:1;
 transform:none;
 }
-
 }
 
 @keyframes rainbow{
@@ -271,70 +360,52 @@ transform:none;
 100%{background-position:0% 50%}
 }
 
-
 @media(max-width:900px){
-
 .info-grid{
 grid-template-columns:1fr;
 }
-
 }
-
 
 </style>
 
 </head>
 
-
 <body>
 
+<!-- Кнопка поддержки -->
+<button class="support-link" id="supportBtn">Поддержка</button>
+
+<!-- Летающий DVD-бейдж -->
+<div id="dvdBadge">Если вы тут, вы тестировщики сайта, нажмите, чтобы оставить отзыв о игре ( нажимать после теста)</div>
 
 <header class="hero">
-
-<img src="walpepper.jpg">
-
-<div class="hero-content">
-  <span class="sub-title">wexidevisual</span>
-  <h1>WEXIDE</h1>
-</div>
-
+  <img src="walpepper.jpg">
+  <div class="hero-content">
+    <span class="sub-title">wexidevisual</span>
+    <h1>WEXIDE</h1>
+  </div>
 </header>
-
-
 
 <main>
 
-
 <div class="info-grid reveal">
 
-
 <section class="panel">
-
 <b>WEXIDE</b>
-
 <br><br>
-
 Wexide — лучший софт для нашего времени,
 созданный для тех, кто ценит скорость,
 стабильность и современные технологии.
-
 <br><br>
-
 Благодаря обновлениям,
 продуманному интерфейсу и высокой
 производительности Wexide стал выбором
 тысяч игроков.
-
 </section>
 
-
-
 <section class="panel">
-
 <b>Особенности:</b>
-
 <br><br>
-
 ⚡️ Максимальная производительность.
 <br><br>
 🎨 Современный интерфейс.
@@ -350,152 +421,214 @@ Wexide — лучший софт для нашего времени,
 ⭐️ Кряк Celestial — наше преимущество.
 <br><br>
 🔥 Быстрая работа.
-
 </section>
 
-
-
 <section class="panel">
-
 <b>Почему именно Wexide?</b>
-
 <br><br>
-
 Wexide — это сочетание
 производительности,
 функциональности
 и современного дизайна.
-
 <br><br>
-
 Каждый элемент создан
 с упором на удобство,
 скорость и стабильность.
-
 <br><br>
-
 Wexide — когда качество
 становится стандартом.
-
 </section>
-
 
 </div>
 
-
-
 <section class="notice reveal">
-
 Если антивирус жалуется — временно отключите его на время распаковки архива. Это может происходить с подобными программами.
-
 <br><br>
-
 <b>Пароль от архива:</b> <span style="color:#00e5ff;">123</span>
-
 <br><br>
-
 <b>Распаковка:</b> рекомендуется распаковывать архив через WinRAR
-
 </section>
 
-
-
 <section class="agreement reveal" id="agreementBox">
-
 <label>
-
 <input type="checkbox" id="agree">
-
 Я согласен с 
-
 <a href="agreement.txt" download>
 условиями соглашения
 </a>
-
 </label>
-
 </section>
-
-
 
 <section class="download reveal">
-
 <a class="dl-btn" href="wexideclient.rar" id="downloadBtn">
-
 ⬇ Скачать WEXIDE
-
 </a>
-
 </section>
-
-
 
 <section class="notice reveal">
-
-Всем тестировщикам которые протестируют софт получат месяц подписки бесплатно
-
+Всем тестировщикам в подарок будет месяц подписки тогда, когда софт станет платным.
 </section>
-
-
 
 </main>
 
+<!-- Окно отзыва -->
+<div class="modal-overlay" id="feedbackModal">
+  <div class="modal-card">
+    <div id="feedbackFormBlock">
+      <h2>Отзыв тестировщика</h2>
+      <p>Поделитесь вашими впечатлениями или найденными багами:</p>
+      <textarea id="feedbackText" placeholder="Напишите ваш отзыв здесь..."></textarea>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="feedbackBackBtn">Назад</button>
+        <button class="btn-primary" id="feedbackSendBtn">Отправить</button>
+      </div>
+    </div>
+    <div class="success-msg" id="feedbackSuccess">
+      Спасибо за ваш отзыв! Он поможет сделать софт лучше.
+      <br><br>
+      <button class="btn-secondary" id="feedbackSuccessClose">Закрыть</button>
+    </div>
+  </div>
+</div>
 
-
+<!-- Окно поддержки -->
+<div class="modal-overlay" id="supportModal">
+  <div class="modal-card">
+    <div id="supportFormBlock">
+      <h2>Служба поддержки</h2>
+      <p>Опишите возникшую проблему или вопрос:</p>
+      <textarea id="supportText" placeholder="Опишите вопрос..."></textarea>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="supportBackBtn">Назад</button>
+        <button class="btn-primary" id="supportSendBtn">Отправить</button>
+      </div>
+    </div>
+    <div class="success-msg" id="supportSuccess">
+      Спасибо, с вами скоро свяжутся.
+      <br>
+      С уважением, <b>wexide</b>.
+      <br><br>
+      <button class="btn-secondary" id="supportSuccessClose">Закрыть</button>
+    </div>
+  </div>
+</div>
 
 <script>
 
-const checkbox=document.getElementById("agree");
+// Проверка соглашения перед скачиванием
+const checkbox = document.getElementById("agree");
+const button = document.getElementById("downloadBtn");
+const agreement = document.getElementById("agreementBox");
 
-const button=document.getElementById("downloadBtn");
-
-const agreement=document.getElementById("agreementBox");
-
-
-button.addEventListener("click",(e)=>{
-
-if(!checkbox.checked){
-
-e.preventDefault();
-
-alert("Необходимо принять соглашение");
-
-agreement.classList.remove("jump");
-
-void agreement.offsetWidth;
-
-agreement.classList.add("jump");
-
-}
-
+button.addEventListener("click", (e) => {
+  if(!checkbox.checked){
+    e.preventDefault();
+    alert("Необходимо принять соглашение");
+    agreement.classList.remove("jump");
+    void agreement.offsetWidth;
+    agreement.classList.add("jump");
+  }
 });
 
+// Анимация появления блоков при скролле
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.classList.add("visible");
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold: .15});
 
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 
-const io=new IntersectionObserver((entries)=>{
+// Логика модалок
+const feedbackModal = document.getElementById("feedbackModal");
+const supportModal = document.getElementById("supportModal");
 
-entries.forEach(e=>{
-
-if(e.isIntersecting){
-
-e.target.classList.add("visible");
-
-io.unobserve(e.target);
-
-}
-
+document.getElementById("dvdBadge").addEventListener("click", () => {
+  feedbackModal.classList.add("active");
 });
 
-},{threshold:.15});
+document.getElementById("feedbackBackBtn").addEventListener("click", () => {
+  feedbackModal.classList.remove("active");
+});
 
+document.getElementById("feedbackSendBtn").addEventListener("click", () => {
+  document.getElementById("feedbackFormBlock").style.display = "none";
+  document.getElementById("feedbackSuccess").style.display = "block";
+});
 
-document.querySelectorAll(".reveal")
-.forEach(el=>io.observe(el));
+document.getElementById("feedbackSuccessClose").addEventListener("click", () => {
+  feedbackModal.classList.remove("active");
+  setTimeout(() => {
+    document.getElementById("feedbackFormBlock").style.display = "block";
+    document.getElementById("feedbackSuccess").style.display = "none";
+    document.getElementById("feedbackText").value = "";
+  }, 300);
+});
 
+document.getElementById("supportBtn").addEventListener("click", () => {
+  supportModal.classList.add("active");
+});
+
+document.getElementById("supportBackBtn").addEventListener("click", () => {
+  supportModal.classList.remove("active");
+});
+
+document.getElementById("supportSendBtn").addEventListener("click", () => {
+  document.getElementById("supportFormBlock").style.display = "none";
+  document.getElementById("supportSuccess").style.display = "block";
+});
+
+document.getElementById("supportSuccessClose").addEventListener("click", () => {
+  supportModal.classList.remove("active");
+  setTimeout(() => {
+    document.getElementById("supportFormBlock").style.display = "block";
+    document.getElementById("supportSuccess").style.display = "none";
+    document.getElementById("supportText").value = "";
+  }, 300);
+});
+
+// Физика отскока DVD логотипа
+const badge = document.getElementById("dvdBadge");
+let posX = 100, posY = 100;
+let speedX = 2.2, speedY = 2.2;
+
+function animateDvd() {
+  const winW = window.innerWidth;
+  const winH = window.innerHeight;
+  const badgeW = badge.offsetWidth;
+  const badgeH = badge.offsetHeight;
+
+  posX += speedX;
+  posY += speedY;
+
+  if (posX + badgeW >= winW) {
+    posX = winW - badgeW;
+    speedX = -Math.abs(speedX);
+  } else if (posX <= 0) {
+    posX = 0;
+    speedX = Math.abs(speedX);
+  }
+
+  if (posY + badgeH >= winH) {
+    posY = winH - badgeH;
+    speedY = -Math.abs(speedY);
+  } else if (posY <= 0) {
+    posY = 0;
+    speedY = Math.abs(speedY);
+  }
+
+  badge.style.left = posX + "px";
+  badge.style.top = posY + "px";
+
+  requestAnimationFrame(animateDvd);
+}
+
+requestAnimationFrame(animateDvd);
 
 </script>
-
-
 
 </body>
 </html>
